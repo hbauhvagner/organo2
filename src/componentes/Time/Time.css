@@ -1,6 +1,9 @@
 .time {
     text-align: center;
     padding: 32px;
+    background-image: url("/public/imagens/fundo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .time h3 {

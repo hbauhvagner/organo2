@@ -6,6 +6,7 @@ const Time = (props) => {
 
     return (
         (props.colaboradores.length > 0) ? <section className='time' style={css}>
+            <input type='color' className='input-cor' />
             <h3 style={{ borderColor: props.corPrimaria }}>{props.nome}</h3>
             <div className='colaboradores'>
                 {props.colaboradores.map( colaborador => {

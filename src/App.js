@@ -43,7 +43,7 @@ function App() {
     console.log('deletando colaborador')
   }
 
-  function mudarCorDoTime(cor, nome) {
+  function mudarCor(cor, nome) {
     setTimes(times.map(time => {
       if (time.nome === nome) {
         time.cor = cor;
@@ -53,27 +53,22 @@ function App() {
     }))
   }
 
-  const aoNovoColaboradorAdicionado = (colaborador) => {
-    debugger
-    setColaboradores([...colaboradores, colaborador])
-  }
-
   return (
     <div className="App">
       <Banner />
-      <Formulario times={times.map(time => time.nome)} aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)}/>
-
-      {times.map(time => 
-        <Time 
-          mudarCor={mudarCorDoTime}
-          key={time.nome} 
-          nome={time.nome} 
-          corPrimaria={time.corPrimaria} 
-          cor={time.cor} 
-          colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
-          aoDeletar={deletarColaborador}
-        />
-      )}   
+      <Formulario times={times.map(time => time.nome)} aoCadastrar={colaborador => setColaboradores([...colaboradores, colaborador])}/>
+      <section className='times'>
+        <h1>Minha organização</h1>
+        {times.map((time, indice) => 
+          <Time 
+            mudarCor={mudarCor}
+            key={indice}
+            time={time} 
+            colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
+            aoDeletar={deletarColaborador}
+          />
+        )}   
+      </section>
       <Rodape />
     </div>
   );
